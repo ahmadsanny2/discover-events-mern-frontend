@@ -29,7 +29,7 @@ export default function App({ Component, pageProps:{session,...pageProps} }: App
             inter.className,
             "flex min-h-screen min-w-full flex-col items-center justify-center gap-10 py-10 lg:py"
           )}>
-            <Component {...pageProps} />;
+            <Component {...pageProps} />
           </main>
         </HeroUIProvider>
       </QueryClientProvider>
