@@ -20,15 +20,12 @@ const queryClient = new QueryClient({
   }
 })
 
-export default function App({ Component, pageProps:{session,...pageProps} }: AppProps) {
+export default function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
     <SessionProvider session={session}>
       <QueryClientProvider client={queryClient}>
         <HeroUIProvider>
-          <main className={cn(
-            inter.className,
-            "flex min-h-screen min-w-full flex-col items-center justify-center gap-10 py-10 lg:py"
-          )}>
+          <main className={cn(inter.className)}>
             <Component {...pageProps} />
           </main>
         </HeroUIProvider>
