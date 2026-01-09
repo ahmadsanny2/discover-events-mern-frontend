@@ -43,10 +43,9 @@ const Register = () => {
                         <Link href="/auth/login" className="font-semibold text-danger-400">Login here</Link>
                     </p>
 
-                    {!errors.root && (
-                        <p
-                            className="mb-2 font-medium text-danger">
-                            {errors?.root?.message}
+                    {errors.root?.serverError?.message && (
+                        <p className="mb-2 font-medium text-danger">
+                            {errors.root.serverError.message}
                         </p>
                     )}
 

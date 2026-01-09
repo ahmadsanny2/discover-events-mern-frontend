@@ -29,6 +29,8 @@ const registerSchema = yup.object().shape({
         .required("Please input your password confirmation"),
 })
 
+type RegisterFormValues = yup.InferType<typeof registerSchema>;
+
 const useRegister = () => {
     const router = useRouter()
 
@@ -50,7 +52,7 @@ const useRegister = () => {
         formState: { errors },
         reset,
         setError
-    } = useForm({
+    } = useForm<RegisterFormValues>({
         resolver: yupResolver(registerSchema)
     })
 
@@ -71,7 +73,7 @@ const useRegister = () => {
             reset()
         }
     })
-    
+
     const handleRegister = (data: IRegister) => mutateRegister(data)
 
     return {
