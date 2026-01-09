@@ -3,7 +3,6 @@ import * as yup from "yup"
 import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { ILogin } from "@/types/Auth"
-import authServices from "@/services/auth.service"
 import { useMutation } from "@tanstack/react-query"
 import { useRouter } from "next/router"
 import { signIn } from "next-auth/react"
@@ -17,6 +16,8 @@ const loginSchema = yup.object().shape({
         .string()
         .required("Please input your password"),
 })
+
+type LoginFormValues = yup.InferType<typeof loginSchema>;
 
 const useLogin = () => {
     const router = useRouter()
@@ -33,7 +34,7 @@ const useLogin = () => {
         formState: { errors },
         reset,
         setError
-    } = useForm({
+    } = useForm<LoginFormValues>({
         resolver: yupResolver(loginSchema)
     })
 

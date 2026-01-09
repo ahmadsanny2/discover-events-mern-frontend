@@ -43,12 +43,12 @@ const Login = () => {
                         <Link href="/auth/register" className="font-semibold text-danger-400">Register here</Link>
                     </p>
 
-                    {!errors.root && (
-                        <p
-                            className="mb-2 font-medium text-danger">
-                            {errors?.root?.message}
+                    {errors.root?.serverError?.message && (
+                        <p className="mb-2 font-medium text-danger">
+                            {errors.root.serverError.message}
                         </p>
                     )}
+
 
                     <form
                         className={cn("flex flex-col w-80", Object.keys(errors).length > 0 ? "gap-2" : "gap-4")}
